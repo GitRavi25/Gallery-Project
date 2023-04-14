@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+
+<title>AddImage Page</title>
+
+{% endblock title %}
+
+{% block css %}
+
+{% endblock css %}
+
+{% block body %}
+
+
+<div class="container my-5 p-2 text-light text-center bg-secondary shadow rounded">
+
+    <h1 class="display">Add Image</h1>
+</div>
+
+
+<div class="container shadow p-5 mb-3" style="width:60%;">
+
+    <form action="{% url 'addimage' %}" method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        {% for fm in forms %}
+
+            <div class="mb-3">
+                {{fm.label_tag}}
+                {{fm}}
+
+                <span style="color:red;">{{fm.errors| striptags}}</span>
+            </div>
+
+
+
+
+        {% endfor %}
+
+        <div class="mb-3">
+
+            <input type="submit" value="AddImage" class="btn btn-success">
+
+        </div>
+
+        
+    </form>
+
+
+
+</div>
+
+{% endblock body %}
+
+{% block script %}
+
+{% endblock script %}

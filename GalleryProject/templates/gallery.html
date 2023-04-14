@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+
+<title>Gallery Page</title>
+
+{% endblock title %}
+
+{% block css %}
+
+{% endblock css %}
+
+{% block body %}
+
+
+<div class="container my-5 p-3 shadow rounded text-center text-light bg-secondary ">
+    
+    <h1 class="diaply-6">Gallery</h1>
+
+</div>
+
+<div class="container my-5">
+    <div class="row">
+        <!-- left section  -->
+
+        <div class="col-2">
+
+            <ul class="list-group">
+
+                <li class="list-group-item"><a href="{% url 'gallery' %}" class="text-decoration-none">All Images</a></li>
+
+                {% for cat in category %}
+
+                <li class="list-group-item"><a href="{% url 'cat' cat.id %}" class="text-decoration-none">{{cat.title}}</a></li> 
+
+
+                {% endfor %}
+            </ul>
+        </div>
+
+
+        <div class="col-10">
+
+
+            <div class="row">
+
+                {% for img in Images %}
+
+                <div class="col-3">
+                    <div class="card" style="width: 13rem;">
+                        <img id="image" src="{{img.image.url}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{img.title}}</h5>
+                          <p class="card-text">Uploaded_by {{img.uploaded_by}}</p>
+                          <p class="card-text">Uploaded_by {{img.uploaded_at}}</p>
+                          <a href="#" class="btn btn-primary">View Image</a>
+                        </div>
+                      </div>
+                </div>
+
+
+
+
+                {% endfor %}
+            </div>
+            
+        </div>
+
+
+        <!-- right section  -->
+    </div>
+</div>
+
+
+{% endblock body %}
+
+
+{% block script %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock script %}
